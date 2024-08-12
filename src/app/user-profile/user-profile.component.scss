@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+app-user-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

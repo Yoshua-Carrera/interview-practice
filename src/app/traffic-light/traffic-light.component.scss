@@ -1,0 +1,16 @@
+.frame {
+  width: 300px;
+  height: 700px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.red-light, .yellow-light, .green-light {
+  width: 175px;
+  height: 175px;
+  background-color: grey;
+  border-radius: 100%;
+}

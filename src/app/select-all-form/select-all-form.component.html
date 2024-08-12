@@ -1,0 +1,26 @@
+<div class="select-all">
+  <h3>
+    <input type="checkbox" (click)="checkAll()" [checked]="checkedAll" />
+    Select All
+  </h3>
+</div>
+<ul>
+  <li *ngFor="let element of dataList">
+    <input
+      type="checkbox"
+      id="element"
+      [checked]="checkedAll || optionsChecked.includes(element)"
+      (click)="checkOption(element)"
+    />
+    {{ element }}
+  </li>
+</ul>
+<button (click)="uncheckAll()">Clear All</button>
+<hr />
+
+<h4>Selected Values</h4>
+<ul>
+  <li *ngFor="let element of optionsChecked">
+    {{ element }}
+  </li>
+</ul>

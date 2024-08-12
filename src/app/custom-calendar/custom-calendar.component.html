@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="controls">
+    <button class="previous-month" (click)="navigateMonth(previousMonth.index)">
+      {{ previousMonth.text }}
+    </button>
+    <p class="date-string">{{ userReadableDate }}</p>
+    <button class="next-month" (click)="navigateMonth(nextMonth.index)">
+      {{ nextMonth.text }}
+    </button>
+  </div>
+  <div class="year-header">{{ calendarMonth }} - {{ calendarYear }}</div>
+  <div class="calendar">
+    <div
+      *ngFor="let item of calendarItems"
+      class="calendar-items {{ computeCalendarItemClass(item) }} {{
+        calendarHeaders.includes(item) || !item
+          ? calendarItemState.INACTIVE
+          : calendarItemState.NONE
+      }}"
+      (click)="selectNewDate(item)"
+    >
+      {{ item }}
+    </div>
+  </div>
+</div>
+<hr />

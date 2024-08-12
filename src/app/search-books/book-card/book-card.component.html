@@ -1,0 +1,25 @@
+<div class="card" *ngIf="book?.volumeInfo?.title" (click)="bookToCart(book)">
+  <div class="thumbnail">
+    <img [src]="book?.volumeInfo?.imageLinks?.smallThumbnail" alt="" />
+  </div>
+  <div class="text-content">
+    <h2 class="title">{{ book?.volumeInfo?.title }}</h2>
+    <p class="author">
+      <strong>Author</strong> {{ book?.volumeInfo?.authors?.[0] }}
+    </p>
+    <p class="publisher">
+      <strong>Publisher</strong> {{ book?.volumeInfo?.publisher }}
+    </p>
+    <p class="publish-date">
+      <strong>Published Date</strong> {{ book?.volumeInfo?.publishedDate }}
+    </p>
+    <p class="description">
+      <strong>Description</strong>
+      {{
+        book?.volumeInfo?.description
+          ? book?.volumeInfo?.description
+          : 'no Information available'
+      }}
+    </p>
+  </div>
+</div>

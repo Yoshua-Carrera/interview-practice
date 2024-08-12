@@ -1,0 +1,30 @@
+<div class="main">
+  <form class="search" (submit)="fetchUsers()" [formGroup]="searchForm">
+    <label>Username </label>
+    <input formControlName="user" type="text" />
+    <button #submit>Search</button>
+  </form>
+  <hr />
+  <div class="filter">
+    <label>Filter: </label>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterUsers(searchTerm)"
+    />
+  </div>
+  <hr />
+
+  <table>
+    <tr>
+      <th>User ID</th>
+      <th>Username</th>
+      <th>Profile URL</th>
+    </tr>
+    <tr *ngFor="let user of displayList">
+      <td>{{ user.id }}</td>
+      <td>{{ user.login }}</td>
+      <td>{{ user.url }}</td>
+    </tr>
+  </table>
+</div>

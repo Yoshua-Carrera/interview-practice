@@ -1,0 +1,26 @@
+<div class="frame">
+  <div
+    class="red-light"
+    [ngStyle]="{
+      'background-color': activeColor === 'red' ? 'red' : 'grey'
+    }"
+  ></div>
+  <div
+    class="yellow-light"
+    [ngStyle]="{
+      'background-color': activeColor === 'yellow' ? 'yellow' : 'grey'
+    }"
+  >
+    >
+  </div>
+  <div
+    class="green-light"
+    [ngStyle]="{
+      'background-color': activeColor === 'green' ? 'green' : 'grey'
+    }"
+  >
+    >
+  </div>
+</div>
+
+{{ lightTimer$ | async }}

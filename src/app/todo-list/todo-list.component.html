@@ -1,0 +1,25 @@
+<div
+  class="main"
+  *ngIf="{
+    posts: posts$ | async,
+    comments: comments$ | async
+  } as variables"
+>
+  <h1>List of posts</h1>
+  <div class="post-container">
+    <div
+      class="post"
+      *ngFor="let post of variables.posts"
+      [id]="post.id"
+      (click)="handlePostClick(post.id)"
+    >
+      {{ post.id }} - {{ post.title }}
+
+      <div class="comments" *ngIf="post.id === expandedCommentId">
+        <p
+          *ngFor="let comment of variables.comments"
+        > {{ comment.body }} </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+* {
+  box-sizing: content-box;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.note-container {
+  width: 50%;
+  background-color: grey;
+  height: 100vh;
+  .note-header,
+  .my-notes {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    .add {
+      cursor: pointer;
+    }
+  }
+  .my-notes {
+    padding: 0rem 1rem;
+    margin: 0;
+  }
+}
+
+.note-input {
+  height: 100vh;
+  input {
+    margin: 1rem 0;
+  }
+  .clickables {
+    button {
+      margin-right: 0.5rem;
+    }
+  }
+}

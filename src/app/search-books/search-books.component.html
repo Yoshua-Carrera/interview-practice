@@ -1,0 +1,55 @@
+<div
+  class="main"
+  *ngIf="{
+    books: bookResults$ | async,
+    bookCart: bookCart$ | async
+  } as variables"
+>
+  <div class="header-navigation">
+    <div
+      *ngFor="let header of headerConfig"
+      [class]="header.id"
+      (click)="tabChange(header.id)"
+    >
+      {{ header.title }}
+    </div>
+  </div>
+
+  <div class="main-content" [ngSwitch]="activeTab">
+    <div *ngSwitchCase="headerOptions.HOME">
+      <div class="home-page">
+        <input
+          [(ngModel)]="searchTerm"
+          type="text"
+          (input)="keyEvent(searchTerm)"
+        />
+      </div>
+      <div class="bottom-content">
+        <div class="book-list">
+          <div class="book-content" *ngFor="let book of variables.books">
+            <app-book-card [book]="book"></app-book-card>
+          </div>
+        </div>
+        <div class="cart">
+          <strong>My reading List</strong>
+          <div class="cart-list" *ngFor="let book of variables.bookCart">
+            <p class="title">
+              {{ book?.volumeInfo?.title }}
+            </p>
+            <p class="icon-x" (click)="removeFromCart(book)">X</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-content" *ngSwitchCase="headerOptions.SHOW_BOOKS">
+      <div class="cart">
+        <h1>Books</h1>
+        <div class="cart-list" *ngFor="let book of variables.bookCart">
+          <h2 class="title">
+            {{ book?.volumeInfo?.title }}
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

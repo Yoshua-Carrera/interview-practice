@@ -1,0 +1,71 @@
+<div class="dropown">
+  <label>Choose project to showcase: </label>
+  <select [(ngModel)]="selectedProject">
+    <option value="" selected disabled hidden>Choose here</option>
+    <option *ngFor="let project of projectList" [value]="project">
+      {{ project }}
+    </option>
+  </select>
+</div>
+<hr />
+<ng-container [ngSwitch]="selectedProject">
+  <!-- Change the color of the title -->
+  <div
+    class="Change the color of the title"
+    *ngSwitchCase="projects.TILE_COLOR"
+  >
+    <h1 class="header {{ activeTile }}">Change the color of the title</h1>
+    <div
+      *ngFor="let tile of sampleTiles"
+      class="tile {{ tile.color }} active-{{ activeTile }}"
+    >
+      <app-change-tile-color
+        [tile]="tile"
+        (buttonClicked)="handleTileButtonClick($event)"
+      ></app-change-tile-color>
+    </div>
+  </div>
+
+  <!-- book search -->
+  <div class="book search" *ngSwitchCase="projects.SEARCH_BOOKS">
+    <app-search-books></app-search-books>
+  </div>
+
+  <!-- Select All Form -->
+  <div class="Select All Form" *ngSwitchCase="projects.SELECT_ALL_FORM">
+    <app-select-all-form></app-select-all-form>
+  </div>
+
+  <!-- Display user profiles in GitHub -->
+  <div
+    class="Display user profiles in GitHub"
+    *ngSwitchCase="projects.GITHUB_SHOWCASE"
+  >
+    <app-github-user-showcase></app-github-user-showcase>
+  </div>
+
+  <!-- notelist -->
+  <div class="notelist" *ngSwitchCase="projects.NOTE_READER">
+    <app-note-reader></app-note-reader>
+  </div>
+
+  <!-- traffic light -->
+  <div class="traffic light" *ngSwitchCase="projects.TRAFFIC_LIGHT">
+    <app-traffic-light></app-traffic-light>
+  </div>
+
+  <div class="calendar" *ngSwitchCase="projects.CALENDAR">
+    <app-custom-calendar></app-custom-calendar>
+  </div>
+
+  <!-- post list and comments -->
+  <app-todo-list
+    class="post list and comments"
+    *ngSwitchCase="projects.TODO_LIST"
+  ></app-todo-list>
+
+  <!-- User Profile -->
+  <div class="app-user-profile" *ngSwitchCase="projects.USER_CARD">
+    <app-user-profile></app-user-profile>
+  </div>
+</ng-container>

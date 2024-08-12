@@ -1,0 +1,30 @@
+<div class="main">
+  <div class="note-container">
+    <div class="note-header">
+      <h2>Notes</h2>
+      <h2 class="add" (click)="clearActiveNote()">+</h2>
+    </div>
+    <div class="my-notes" *ngFor="let note of notes">
+      <h4 (click)="setActiveNote(note)">{{ note.title }}</h4>
+      <h4 class="add" (click)="removeNote(note)">[X]</h4>
+    </div>
+  </div>
+  <div class="note-input">
+    <form action="" (submit)="saveNote()" [formGroup]="noteForm">
+      <input type="text" formControlName="title" />
+      <textarea
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+        formControlName="body"
+      ></textarea>
+      <div class="clickables">
+        <button (click)="clearNote()" type="button" [disabled]="canSubmit">
+          revert
+        </button>
+        <button #submit [disabled]="canSubmit">save</button>
+      </div>
+    </form>
+  </div>
+</div>
